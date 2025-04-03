@@ -24,7 +24,7 @@ resource "kubernetes_deployment" "frontend" {
 
       spec {
         container {
-          image = "kodekloud/webapp-color:v1"
+          image = "nginx:latest"
           name  = "simple-webapp"
           port {
             container_port = "8080"

@@ -8,8 +8,8 @@ resource "kubernetes_service" "webapp-service" {
     }
 
     port {
-      port        = 8080
-      target_port = 8080
+      port        = 80
+      target_port = 80
       node_port   = 30080
     }
 
