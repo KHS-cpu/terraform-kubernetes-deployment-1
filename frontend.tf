@@ -1,33 +1,27 @@
 resource "kubernetes_deployment" "frontend" {
   metadata {
-    name = "frontend"
-    labels = {
-      name = "frontend"
-    }
+    name = var.deployment_name
+    labels = var.deployment_labels
   }
 
   spec {
-    replicas = 4
+    replicas = var.deployment_replicas
 
     selector {
-      match_labels = {
-        name : "webapp"
-      }
+      match_labels = var.deployment_labels
     }
 
     template {
       metadata {
-        labels = {
-          name : "webapp"
-        }
+        labels = var.deployment_labels
       }
 
       spec {
         container {
-          image = "nginx:latest"
-          name  = "simple-webapp"
+          image = var.image
+          name  = var.container_name
           port {
-            container_port = "8080"
+            container_port = var.container_port
           }
 
         }

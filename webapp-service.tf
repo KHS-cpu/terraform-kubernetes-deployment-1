@@ -1,6 +1,6 @@
 resource "kubernetes_service" "webapp-service" {
   metadata {
-    name = "webapp-service"
+    name = var.service_name
   }
   spec {
     selector = {
@@ -8,11 +8,11 @@ resource "kubernetes_service" "webapp-service" {
     }
 
     port {
-      port        = 80
-      target_port = 80
-      node_port   = 30080
+      port        = var.container_port
+      target_port = var.container_port
+      node_port   = var.nodeport
     }
 
-    type = "NodePort"
+    type = var.service_type
   }
 }
